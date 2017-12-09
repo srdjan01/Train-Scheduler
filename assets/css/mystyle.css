@@ -1,0 +1,35 @@
+#style {
+	background-image: url('../images/train1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	align-self: center;
+	background-position: center; 
+	color: black;
+}
+
+h1 {
+	background-color: white;
+	opacity: 0.6;
+	border-radius: 50px;
+	margin-left: 25%;
+	margin-right: 25%;
+
+}
+
+#logo {
+	background-color: white;
+	opacity: 0.6;
+	border-radius: 50px;
+	margin-left: 30%;
+	margin-right: 30%;
+
+}
+
+.panel-primary>.panel-heading {
+	background-color: #42437e;
+	border-color: #42437e;
+}
+
+.btn-primary {
+	background-color: #42437e;
+}
