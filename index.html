@@ -43,14 +43,14 @@
               <h3 class="panel-title"><strong>Current Train Schedule</strong></h3>
             </div>
             <div class="panel-body">
-              <table class="table table-hover" id='employee-table'>
+              <table class="table table-hover" id='train-table'>
                 <thead>
                   <tr>
                     <th>Train Name</th>
                     <th>Destination </th>
                     <th>Frequency(min)</th>
                     <th>Next Arrival</th>
-                    <th>Departure to Station In (min)</th>
+                    <th>Minutes Away</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -69,18 +69,22 @@
               <!-- Entry Form -->
               <form>
                 <div class="form-group">
-                  <label for="employee-name-input">Destination</label>
-                  <input class="form-control" id="employee-name-input" type="text">
+                  <label for="train-name-input">Train Name</label>
+                  <input class="form-control" id="train-name-input" type="text">
                 </div>
                 <div class="form-group">
-                  <label for="role-input">First Train Time (HH:mm-military time)</label>
-                  <input class="form-control" id="role-input" type="text">
+                  <label for="destination-name-input">Destination</label>
+                  <input class="form-control" id="destination-name-input" type="text">
                 </div>
                 <div class="form-group">
-                  <label for="start-input">Frequency (min)</label>
-                  <input class="form-control" id="start-input" type="text">
+                  <label for="time-input">First Train Time (HH:mm-military time)</label>
+                  <input class="form-control" id="time-input" type="text">
                 </div>
-                <button class="btn btn-primary" id="add-employee-btn" type="submit">Submit</button>
+                <div class="form-group">
+                  <label for="frequency-input">Frequency (min)</label>
+                  <input class="form-control" id="frequency-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
               </form>
 
             </div>
@@ -94,7 +98,7 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="timesheetLogic.js"></script>
+    <script src="assets/javascript/train.js"></script>
 
   </body>
 
