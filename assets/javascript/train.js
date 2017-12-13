@@ -1,12 +1,11 @@
-/* global firebase moment */
-// Steps to complete:
+
 
 // 1. Initialize Firebase
 // 2. Create button for adding new train- then update the html + update the database
 // 3. Create a way to retrieve train from the train database.
 // 4. Create a way to calculate the months worked. Using difference between start and current time.
 //    Then use moment.js formatting to set difference in months.
-// 5. Calculate Total billed
+// 5. Calculate Total frequency
 
  // Initialize Firebase
   var config = {
@@ -75,10 +74,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var trainFrequency = childSnapshot.val().frequency;
 
 
-  
-
-  //find when the next train is and minutes until next train
-
   // Frequency of train
   var tFrequency = trainFrequency;
 
@@ -105,17 +100,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var tMinutesTillTrain = tFrequency - tRemainder;
   //console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-
-  // Train Info
-  // console.log(trainTime);
-  // console.log(trainDestination);
-  // console.log(trainTime);
-  // console.log(trainFrequency);
-  
-
 // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination+ "</td><td>" +
   trainFrequency  + "</td><td>" + trainTime + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 });
 
-// Now we will create code in moment.js to confirm that any attempt we use mets this test case
