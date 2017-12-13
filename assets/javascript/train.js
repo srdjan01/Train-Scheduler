@@ -49,7 +49,7 @@ $("#add-train-btn").on("click", function(event) {
   console.log(newTrain.name);
   console.log(newTrain.destination);
   console.log(newTrain.time);
-  console.log(newTrain.frequncy);
+  console.log(newTrain.frequency);
   
 
   // Alert
@@ -75,58 +75,51 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var trainFrequency = childSnapshot.val().frequency;
 
 
-
-  //  // find when the next train is and minutes until next train
-  // var tfrequency = childSnapshot.val().frequency;
-
-  // // pushed back 1 year to make sure it comes before current time
-  // var convertedDate = moment(childSnapshot.val().firstTrain, 'hh:mm').subtract(1, 'years');
-  // var trainTime = moment(convertedDate).format('HH:mm');
-  // var currentTime = moment();
-
-  // // pushed back 1 year to make sure it comes before current time
-  // var firstTimeConverted = moment(trainTime,'hh:mm').subtract(1, 'years');
-  // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  // var tRemainder = diffTime % tfrequency;
   
-  // //solved
-  // var tMinutesTillTrain = tfrequency - tRemainder;
-  // //solved
-  // var nextTrain = moment().add(tMinutesTillTrain, 'minutes').format('HH:mm')
 
- 
+  //find when the next train is and minutes until next train
+
+  // Frequency of train
+  var tFrequency = trainFrequency;
+
+  // Time the first train arrives
+  var firstTime = trainTime;
+
+  // First Time (pushed back 1 year to make sure it comes before current time)
+  var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  // Current Time
+  var currentTime = moment();
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+  // Difference between the times
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("DIFFERENCE IN TIME: " + diffTime);
+
+  // Time apart (remainder)
+  var tRemainder = diffTime % tFrequency;
+  console.log(tRemainder);
+
+  // Minute Until Train
+  var tMinutesTillTrain = tFrequency - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+  // Next Train
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
 
   // Train Info
-  console.log(trainTime);
-  console.log(trainDestination);
-  console.log(trainTime);
-  console.log(trainFrequency);
-  // console.log(empRate);
+  // console.log(trainTime);
+  // console.log(trainDestination);
+  // console.log(trainTime);
+  // console.log(trainFrequency);
+  
 
-
-
-
-  // Prettify the train time
-  // var trainTimePretty = moment.unix(trainTime).format("HH/MM/SS");
-
-  // // Calculate the months worked using hardcore math
-  // // To calculate the months worked
-  // var empMonths = moment().diff(moment.unix(empStart, "X"), "months");
-  // console.log(empMonths);
-
-  // // Calculate the total billed rate
-  // var empBilled = empMonths * empRate;
-  // console.log(empBilled);
-
-  // Add each train's data into the table
+// Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination+ "</td><td>" +
-  trainFrequency  + "</td><td>" + trainTime + "</td></tr>");
+  trainFrequency  + "</td><td>" + trainTime + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 });
 
-// Example Time Math
-// -----------------------------------------------------------------------------
-// Assume Employee start date of January 1, 2015
-// Assume current date is March 1, 2016
-
-// We know that this is 15 months.
 // Now we will create code in moment.js to confirm that any attempt we use mets this test case
